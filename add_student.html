@@ -1,0 +1,40 @@
+{% extends 'students/master.html' %}
+{% block title %}Add Student{% endblock %}
+{% block nav_add %}sidebar__link--active{% endblock %}
+{% block page_heading %}Add New Student{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm border-0">
+    <div class="card-body p-4">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">First Name</label>
+                    <input type="text" name="firstname" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Last Name</label>
+                    <input type="text" name="lastname" class="form-control" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Course</label>
+                    <input type="text" name="course" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Year Level</label>
+                    <input type="number" name="year_level" class="form-control" min="1" max="5" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Save Student</button>
+            <a href="{% url 'student_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
